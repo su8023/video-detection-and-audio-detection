@@ -1,0 +1,291 @@
+:root {
+  color-scheme: light;
+  font-family: "Microsoft YaHei", "Segoe UI", Arial, sans-serif;
+  background: #f4f6f5;
+  color: #18221f;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+.app-shell {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 360px;
+  min-height: 100vh;
+}
+
+.video-pane {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 18px;
+  gap: 14px;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+h1,
+h2,
+p {
+  margin: 0;
+}
+
+h1 {
+  font-size: 24px;
+  line-height: 1.25;
+}
+
+h2 {
+  font-size: 16px;
+  margin-bottom: 12px;
+}
+
+.topbar p,
+.muted {
+  color: #60706a;
+  font-size: 13px;
+}
+
+button {
+  border: 1px solid #b9c8c2;
+  border-radius: 6px;
+  background: #ffffff;
+  color: #16221f;
+  cursor: pointer;
+  min-height: 36px;
+  padding: 0 14px;
+  font-size: 14px;
+}
+
+button:hover {
+  background: #edf4f1;
+}
+
+input,
+select {
+  width: 100%;
+  min-height: 36px;
+  border: 1px solid #b9c8c2;
+  border-radius: 6px;
+  padding: 0 10px;
+  background: #ffffff;
+  color: #16221f;
+  font: inherit;
+}
+
+.input-row {
+  display: grid;
+  grid-template-columns: 1fr 72px;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.field-label {
+  display: block;
+  margin: 8px 0 6px;
+  color: #64736d;
+  font-size: 13px;
+}
+
+.field-check {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 12px 0 8px;
+  font-size: 13px;
+}
+
+.field-check input {
+  width: auto;
+  min-height: auto;
+}
+
+.button-row {
+  display: grid;
+  grid-template-columns: 1fr 72px 72px;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.button-row:has(button:nth-child(2):last-child) {
+  grid-template-columns: 1fr 72px;
+}
+
+.video-feed {
+  width: 100%;
+  flex: 1;
+  min-height: 420px;
+  object-fit: contain;
+  background: #101615;
+  border: 1px solid #d7e0dc;
+  border-radius: 8px;
+}
+
+.side-pane {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 18px;
+  border-left: 1px solid #d7e0dc;
+  background: #ffffff;
+}
+
+.side-pane section {
+  padding-bottom: 16px;
+  border-bottom: 1px solid #e6ece9;
+}
+
+.status-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+  margin: 0;
+}
+
+.status-grid div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  min-height: 30px;
+}
+
+dt {
+  color: #64736d;
+  font-size: 13px;
+}
+
+dd {
+  margin: 0;
+  font-weight: 600;
+  text-align: right;
+}
+
+.device-list {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 13px;
+}
+
+.device-list li {
+  padding: 8px;
+  border: 1px solid #e0e7e4;
+  border-radius: 6px;
+  background: #f9fbfa;
+}
+
+.transcript-list,
+.history-list,
+.summary-list,
+.event-list {
+  display: grid;
+  gap: 8px;
+  max-height: 320px;
+  overflow: auto;
+  padding-right: 2px;
+}
+
+.history-list {
+  max-height: 260px;
+}
+
+.summary-list {
+  max-height: 380px;
+}
+
+.event-list {
+  max-height: 240px;
+}
+
+.transcript-item {
+  padding: 9px;
+  border: 1px solid #dfe8e4;
+  border-radius: 6px;
+  background: #f8fbfa;
+}
+
+.transcript-partial {
+  border-color: #78b7a0;
+  background: #eef8f4;
+}
+
+.transcript-pending {
+  border-color: #b7c7de;
+  background: #f4f8fc;
+}
+
+.transcript-item p {
+  margin-top: 5px;
+  line-height: 1.45;
+  font-size: 14px;
+}
+
+.transcript-meta {
+  color: #61716b;
+  font-size: 12px;
+}
+
+.transcript-draft {
+  margin-top: 6px;
+  color: #7a8580;
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.summary-item {
+  padding: 10px;
+  border: 1px solid #dfe8e4;
+  border-radius: 6px;
+  background: #f8fbfa;
+}
+
+.event-item {
+  padding: 9px;
+  border: 1px solid #dfe8e4;
+  border-radius: 6px;
+  background: #f8fbfa;
+}
+
+.event-item p {
+  margin-top: 5px;
+  line-height: 1.4;
+  font-size: 14px;
+}
+
+.summary-item h3 {
+  margin: 6px 0;
+  font-size: 14px;
+}
+
+.summary-item pre {
+  margin: 0;
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-family: inherit;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+@media (max-width: 980px) {
+  .app-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .side-pane {
+    border-left: 0;
+    border-top: 1px solid #d7e0dc;
+  }
+}
