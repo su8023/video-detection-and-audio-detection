@@ -1,0 +1,72 @@
+app:
+  host: 127.0.0.1
+  port: 5050
+  debug: false
+camera:
+  index: 0
+  width: 640
+  height: 480
+  fps: 30
+  backend: dshow
+  fourcc: MJPG
+vision:
+  enabled: true
+  model_path: models/yolov8n.pt
+  confidence: 0.45
+  detection_interval_ms: 250
+  imgsz: 416
+  device: cuda
+audio:
+  sample_rate: 16000
+  channels: 1
+  mic_test_seconds: 3
+  input_device: null
+stt:
+  enabled: true
+  engine: vosk_stream
+  vosk_model_path: models/vosk-model-small-cn-0.22
+  partial_interval_ms: 100
+  stream_block_ms: 50
+  pre_roll_ms: 300
+  endpoint_silence_ms: 650
+  min_utterance_ms: 900
+  max_utterance_seconds: 18
+  finalizer_enabled: true
+  finalizer_backend: qwen3_asr
+  finalizer_model_id: Qwen/Qwen3-ASR-1.7B
+  finalizer_preload: true
+  finalizer_model_size: 1.7B
+  finalizer_language: null
+  finalizer_device: cuda
+  finalizer_compute_type: auto
+  model_size: base
+  device: cpu
+  compute_type: int8
+  language: null
+  chunk_seconds: 4
+  min_rms: 0.018
+  min_record_chars: 2
+  no_speech_threshold: 0.65
+  log_prob_threshold: -1.0
+llm:
+  enabled: false
+  provider: ollama
+  base_url: http://127.0.0.1:11434
+  model: qwen2.5:7b-instruct-q4_K_M
+  timeout_seconds: 90
+database:
+  path: data/app.db
+automation:
+  enabled: true
+  person_absent_summary: true
+  absent_confirm_seconds: 5
+  summary_recent_limit: 80
+  monitor_interval_seconds: 1
+keywords:
+  start_chat:
+  - 开启对话模式
+  - 开始对话
+  - 助手开始
+  stop_chat:
+  - 退出对话模式
+  - 停止对话
