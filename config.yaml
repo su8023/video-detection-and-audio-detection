@@ -33,9 +33,9 @@ stt:
   max_utterance_seconds: 18
   finalizer_enabled: true
   finalizer_backend: qwen3_asr
-  finalizer_model_id: Qwen/Qwen3-ASR-1.7B
+  finalizer_model_id: Qwen/Qwen3-ASR-0.6B
   finalizer_preload: true
-  finalizer_model_size: 1.7B
+  finalizer_model_size: 0.6B
   finalizer_language: null
   finalizer_device: cuda
   finalizer_compute_type: auto
