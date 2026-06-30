@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Local AI Monitor</title>
+    <link rel="stylesheet" href="/static/css/style.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="video-pane">
+        <div class="topbar">
+          <div>
+            <h1>本地 AI 监控测试</h1>
+            <p>摄像头、人员检测、实时语音转写、历史记录与总结</p>
+          </div>
+          <button id="refreshBtn" type="button">刷新状态</button>
+        </div>
+        <img class="video-feed" src="/video_feed" alt="camera stream" />
+      </section>
+
+      <aside class="side-pane">
+        <section>
+          <h2>实时状态</h2>
+          <dl class="status-grid">
+            <div><dt>摄像头</dt><dd id="cameraState">-</dd></div>
+            <div><dt>画面</dt><dd id="frameSize">-</dd></div>
+            <div><dt>FPS</dt><dd id="captureFps">-</dd></div>
+            <div><dt>人数</dt><dd id="peopleCount">-</dd></div>
+            <div><dt>YOLO</dt><dd id="detectorState">-</dd></div>
+            <div><dt>推理</dt><dd id="inferenceTime">-</dd></div>
+            <div><dt>数据库</dt><dd id="databaseState">-</dd></div>
+            <div><dt>自动化</dt><dd id="automationState">-</dd></div>
+            <div><dt>Ollama</dt><dd id="ollamaState">-</dd></div>
+          </dl>
+        </section>
+
+        <section>
+          <h2>麦克风</h2>
+          <button id="micBtn" type="button">录 3 秒测试</button>
+          <p id="micResult" class="muted">等待测试</p>
+        </section>
+
+        <section>
+          <h2>实时转写</h2>
+          <div class="button-row">
+            <button id="sttStartBtn" type="button">开始转写</button>
+            <button id="sttStopBtn" type="button">停止</button>
+            <button id="sttClearBtn" type="button">清空</button>
+          </div>
+          <p id="sttStatus" class="muted">未启动</p>
+          <div id="transcriptList" class="transcript-list"></div>
+        </section>
+
+        <section>
+          <h2>历史记录</h2>
+          <div class="input-row">
+            <input id="historySearchInput" type="search" placeholder="搜索历史记录" />
+            <button id="historySearchBtn" type="button">搜索</button>
+          </div>
+          <div class="button-row">
+            <button id="historyRefreshBtn" type="button">刷新历史</button>
+            <button id="historyClearBtn" type="button">清空库</button>
+          </div>
+          <div class="button-row">
+            <button id="exportMdBtn" type="button">导出 MD</button>
+            <button id="exportTxtBtn" type="button">TXT</button>
+            <button id="exportJsonBtn" type="button">JSON</button>
+          </div>
+          <div id="historyList" class="history-list"></div>
+        </section>
+
+        <section>
+          <h2>设置</h2>
+          <label class="field-label" for="voiceModeSelect">语音模式</label>
+          <div class="input-row">
+            <select id="voiceModeSelect">
+              <option value="fast">极速</option>
+              <option value="balanced">平衡</option>
+              <option value="accurate">准确</option>
+            </select>
+            <button id="saveVoiceModeBtn" type="button">应用</button>
+          </div>
+          <p id="voiceModeHint" class="muted">-</p>
+
+          <label class="field-label" for="asrModelSelect">ASR 模型</label>
+          <div class="input-row">
+            <select id="asrModelSelect">
+              <option value="qwen3_0_6b">Qwen3-ASR 0.6B</option>
+              <option value="qwen3_1_7b">Qwen3-ASR 1.7B</option>
+              <option value="whisper_medium">Whisper medium</option>
+              <option value="whisper_small">Whisper small</option>
+            </select>
+            <button id="saveAsrModelBtn" type="button">应用</button>
+          </div>
+          <p id="asrModelHint" class="muted">-</p>
+
+          <label class="field-check">
+            <input id="autoSummaryEnabled" type="checkbox" />
+            <span>人离开后自动总结</span>
+          </label>
+          <label class="field-label" for="absentSecondsInput">离开确认秒数</label>
+          <div class="input-row">
+            <input id="absentSecondsInput" type="number" min="1" max="120" step="1" />
+            <button id="saveAutomationBtn" type="button">保存</button>
+          </div>
+          <p id="settingsStatus" class="muted">等待设置</p>
+        </section>
+
+        <section>
+          <h2>阶段总结</h2>
+          <div class="button-row">
+            <button id="summaryBtn" type="button">生成总结</button>
+            <button id="summaryRefreshBtn" type="button">刷新</button>
+          </div>
+          <p id="summaryStatus" class="muted">等待生成</p>
+          <div id="summaryList" class="summary-list"></div>
+        </section>
+
+        <section>
+          <h2>事件流</h2>
+          <div class="button-row">
+            <button id="eventsRefreshBtn" type="button">刷新事件</button>
+            <button id="eventsClearBtn" type="button">清空</button>
+          </div>
+          <div id="eventList" class="event-list"></div>
+        </section>
+
+        <section>
+          <h2>输入设备</h2>
+          <ul id="deviceList" class="device-list"></ul>
+        </section>
+      </aside>
+    </main>
+
+    <script src="/static/js/app.js"></script>
+  </body>
+</html>
